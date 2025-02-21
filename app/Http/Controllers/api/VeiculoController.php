@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Models\Veiculo;
+use App\Models\Manutencao;
+use App\Models\Rota;
 
 class VeiculoController
 {
@@ -15,9 +17,21 @@ class VeiculoController
         $resultado = $query->get(['placa', 'tipoveiculo.tipo', 'anoDeFabricacao', 'cor', 'rodagemAquisicao', 'cargaMaxima']);
 
         foreach ($resultado as $key => $value) {
-            $totalKmViajado = 0; // NOTA: melhore isso quando tiver a tabela de viagem
+            $totalKmViajado = 0; 
+            $queryTotalViajado = Rota::query();
+            $queryTotalViajado->where('placa', '=', $value['placa']);
+            foreach ($queryTotalViajado->get(['distancia']) as $chave => $valor) {
+                $totalKmViajado += $valor['distancia'];
+            }
+            unset($valor);
             $resultado[$key]['rodagemAtual'] = $value['rodagemAquisicao'] + $totalKmViajado;
-            $totalManutencao = 0; // NOTA: melhore isso quando tiver a tabela de viagem
+            $totalManutencao = 0;
+            $queryTotalManutencao = Manutencao::query();
+            $queryTotalManutencao->where('placa', '=', $value['placa']);
+            foreach ($queryTotalManutencao->get(['orcamento']) as $chave => $valor) {
+               $totalManutencao += $valor['orcamento']; 
+            }
+            unset($valor);
             $resultado[$key]['totalManutencao'] =  $totalManutencao;
         }
 
