@@ -14,7 +14,7 @@ class VeiculoController
         $query = Veiculo::query();
         $query->where('veiculo.ativo', '=', true);
         $query->join('tipoveiculo', 'veiculo.tipo', '=', 'tipoveiculo.id');
-        $resultado = $query->get(['placa', 'tipoveiculo.tipo', 'anoDeFabricacao', 'cor', 'rodagemAquisicao', 'cargaMaxima']);
+        $resultado = $query->get(['placa', 'tipoveiculo.tipo', 'anoDeFabricacao', 'cor', 'rodagemAquisicao', 'cargaMaxima', 'tipoveiculo.id as tipoid']);
 
         foreach ($resultado as $key => $value) {
             $totalKmViajado = 0; 
@@ -60,7 +60,7 @@ class VeiculoController
         $query->where('veiculo.ativo', '=', true);
         $query->where('placa', '=', $placa);
         $query->join('tipoveiculo', 'veiculo.tipo', '=', 'tipoveiculo.id');
-        $resultado = $query->get(['placa', 'tipoveiculo.tipo', 'anoDeFabricacao', 'cor', 'rodagemAquisicao', 'cargaMaxima']);
+        $resultado = $query->get(['placa', 'tipoveiculo.tipo', 'anoDeFabricacao', 'cor', 'rodagemAquisicao', 'cargaMaxima', 'tipoveiculo.id as tipoid']);
 
         foreach ($resultado as $key => $value) {
             $totalKmViajado = 0; // NOTA: melhore isso quando tiver a tabela de viagem

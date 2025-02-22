@@ -2,7 +2,6 @@
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\api\MotoristaController;
 
-
 Route::apiResource('/motorista', 'App\Http\Controllers\api\MotoristaController');
 Route::apiResource('/motivodefeito', 'App\Http\Controllers\api\MotivoDefeitoController');
 Route::apiResource('/tipoveiculo', 'App\Http\Controllers\api\TipoVeiculoController');

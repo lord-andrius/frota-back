@@ -34,14 +34,6 @@ return [
     | Supported: "session"
     |
     */
-
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
