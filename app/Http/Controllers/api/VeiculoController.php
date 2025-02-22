@@ -87,7 +87,7 @@ class VeiculoController
     }
 
     
-    public function destroy(string $id)
+    public function destroy(string $placa)
     {
         $veiculo = Veiculo::findOrFail($placa);
         $veiculo->ativo = false;
