@@ -14,7 +14,7 @@ class RotaController
         $query->where('rota.ativo', '=', true);
         $query->join('veiculo', 'veiculo.placa', '=', 'rota.placa');
         $query->join('motorista', 'motorista.cnh', '=', 'rota.motorista');
-        return $query->get(['id', 'data', 'veiculo.placa', 'motorista.nome as motorista', 'origem', 'destino', 'distancia', 'pesoCarga', 'receita', 'combustivel', 'pedagio', 'outros', 'rota.ativo']);
+        return $query->get(['id', 'data', 'veiculo.placa', 'motorista.nome as motorista', 'origem', 'destino', 'distancia', 'pesoCarga', 'receita', 'combustivel', 'pedagio', 'outros', 'rota.ativo', 'motorista.nome as motoristanome']);
     }
 
     
@@ -45,7 +45,7 @@ class RotaController
         $query->where('id', '=', $id);
         $query->join('veiculo', 'veiculo.placa', '=', 'rota.placa');
         $query->join('motorista', 'motorista.cnh', '=', 'rota.motorista');
-        return $query->get(['id', 'data', 'veiculo.placa', 'motorista.nome as motorista', 'origem', 'destino', 'distancia', 'pesoCarga', 'receita', 'combustivel', 'pedagio', 'outros', 'rota.ativo']);
+        return $query->get(['id', 'data', 'veiculo.placa', 'motorista.nome as motorista', 'origem', 'destino', 'distancia', 'pesoCarga', 'receita', 'combustivel', 'pedagio', 'outros', 'rota.ativo', 'motorista.nomei as motoristanome']);
     }
 
     
