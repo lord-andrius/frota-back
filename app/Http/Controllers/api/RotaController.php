@@ -72,6 +72,7 @@ class RotaController
     public function destroy(string $id)
     {
         $rota = Rota::findOrFail($id);
+        $rota->ativo = false;
         $rota->save();
     }
 }
