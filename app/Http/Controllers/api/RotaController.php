@@ -60,10 +60,10 @@ class RotaController
         $rota->destino = $request->string('destino');
         $rota->distancia = $request->integer('distancia');
         $rota->pesoCarga = $request->integer('pesoCarga');
-        $rota->receita = $request->decimal('receita');
-        $rota->combustivel = $request->decimal('combustivel');
-        $rota->pedagio = $request->decimal('pedagio');
-        $rota->outros = $request->decimal('outros');
+        $rota->receita = $request->float('receita');
+        $rota->combustivel = $request->float('combustivel');
+        $rota->pedagio = $request->float('pedagio');
+        $rota->outros = $request->float('outros');
         $rota->noPrazo = $request->boolean('noPrazo');
         $rota->save();
     }
