@@ -13,7 +13,7 @@ class ManutencaoController
         $query->where('manutencao.ativo', '=', true);
         $query->join('veiculo', 'veiculo.placa', "=", "manutencao.placa");
         $query->join('motivoDefeito', 'motivoDefeito.id', "=", "manutencao.motivoDefeito");
-        return $query->get(['manutencao.id','data','veiculo.placa as veiculo', 'iluminacao', 'eletrica', 'motor', 'freios', 'lataria', 'vidros', 'pneus', 'orcamento', 'motivoDefeito.motivo', 'observacao', 'manutencao.ativo']);
+        return $query->get(['manutencao.id','data','veiculo.placa as veiculo', 'iluminacao', 'eletrica', 'motor', 'freios', 'lataria', 'vidros', 'pneus', 'orcamento', 'motivoDefeito.motivo', 'observacao', 'manutencao.ativo', 'motivoDefeito.id as motivoid']);
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class ManutencaoController
         $query->where('manutencao.id', '=', $id);
         $query->join('veiculo', 'veiculo.placa', "=", "manutencao.placa");
         $query->join('motivoDefeito', 'motivoDefeito.id', "=", "manutencao.motivoDefeito");
-        return $query->get(['manutencao.id','data','veiculo.placa as veiculo', 'iluminacao', 'eletrica', 'motor', 'freios', 'lataria', 'vidros', 'pneus', 'orcamento', 'motivoDefeito.motivo', 'observacao', 'manutencao.ativo']);
+        return $query->get(['manutencao.id','data','veiculo.placa as veiculo', 'iluminacao', 'eletrica', 'motor', 'freios', 'lataria', 'vidros', 'pneus', 'orcamento', 'motivoDefeito.motivo', 'observacao', 'manutencao.ativo', 'motivoDefeito.id as motivoid']);
     }
 
     
